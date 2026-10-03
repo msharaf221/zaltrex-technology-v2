@@ -1,0 +1,7 @@
+Contact: mailto:security@zaltrex.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, ar
+Canonical: https://zaltrex.com/.well-known/security.txt
+Policy: https://zaltrex.com/about#security
+Acknowledgments: https://zaltrex.com/about#hall-of-fame
+Hiring: https://zaltrex.com/about#careers
