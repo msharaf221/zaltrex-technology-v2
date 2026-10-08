@@ -22,7 +22,7 @@ const pages = [
     en: "First step? Say hello.",
   },
   {
-    path: "/request-service",
+    path: "/register", ar: "انضم إلينا وابدأ بطلب خدماتك ومتابعة حالتها بسهولة.", en: "Join us to easily request services and track their status." }, { path: "/request-service",
     ar: "فكرتك. وخطوة واضحة بعدها.",
     en: "Your idea. A clear next step.",
   },

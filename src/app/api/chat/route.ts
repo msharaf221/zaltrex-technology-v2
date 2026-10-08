@@ -144,7 +144,7 @@ export async function POST(request: Request) {
   if (!limited.allowed)
     return errorResponse(locale, "limited", 429, limited.retryAfter);
 
-  const primary = process.env.GEMINI_MODEL || "gemini-flash-latest";
+  const primary = process.env.GEMINI_MODEL || "gemini-3.1-flash";
   const fallback = process.env.GEMINI_FALLBACK_MODEL ?? "gemini-3.1-flash-lite";
   const models = Array.from(
     new Set([primary, ...(fallback && fallback !== "none" ? [fallback] : [])]),

@@ -156,6 +156,57 @@ export async function submitServiceRequest(
   }
 }
 
+export async function signUp(
+  _previous: FormState,
+  form: FormData,
+): Promise<FormState> {
+  const t = dictionaries[formLocale(form)].validation;
+
+  // Rate limiting against automated signups
+  const ip = await getClientIp();
+  const limit = await limitServerAction("signin", ip); // Use same limit bucket as signin or new one
+  if (!limit.allowed) {
+    return failure(t.rateLimited);
+  }
+
+  const schema = z.object({
+    name: z.string().trim().min(1, t.name).max(120, t.tooLong),
+    email: z.email(t.email).max(254, t.tooLong),
+    password: z.string().min(6, t.password).max(128, t.tooLong),
+  });
+
+  const parsed = schema.safeParse({
+    name: text(form, "name").trim(),
+    email: text(form, "email").trim(),
+    password: text(form, "password"),
+  });
+
+  if (!parsed.success)
+    return {
+      ...failure(t.check),
+      fieldErrors: parsed.error.flatten().fieldErrors,
+    };
+
+  const supabase = await createClient();
+  if (!supabase) return failure(t.unconfigured);
+
+  try {
+    const { error } = await supabase.auth.signUp({
+      email: parsed.data.email,
+      password: parsed.data.password,
+      options: {
+        data: {
+          name: parsed.data.name,
+        },
+      },
+    });
+    if (error) return failure(t.signupError);
+    return { status: "success", message: t.signupSuccess };
+  } catch {
+    return failure(t.network);
+  }
+}
+
 export async function signIn(
   _previous: FormState,
   form: FormData,

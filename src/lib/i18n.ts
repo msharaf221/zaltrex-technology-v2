@@ -197,6 +197,14 @@ export const dictionaries = {
       completed: "مكتمل",
       cancelled: "ملغي",
       genericService: "طلب خدمة",
+      signup: "إنشاء حساب جديد",
+      signupIntro: "انضم إلينا وابدأ بطلب خدماتك ومتابعة حالتها بسهولة.",
+      signupButton: "إنشاء حساب",
+      signingUp: "جاري إنشاء الحساب...",
+      hasAccount: "لديك حساب بالفعل؟ سجل دخولك.",
+      name: "الاسم",
+      namePlaceholder: "الاسم",
+
     },
     setup: {
       preview:
@@ -222,6 +230,9 @@ export const dictionaries = {
       requestSuccess: "طلبك اتبعت. تقدر تتابع حالته تحت.",
       signinError: "تعذّر تسجيل الدخول. راجع بياناتك وتأكيد بريدك الإلكتروني.",
       signinSuccess: "تم تسجيل الدخول.",
+      signupSuccess: "تم إنشاء الحساب بنجاح. يرجى تسجيل الدخول.",
+      signupError: "تعذّر إنشاء الحساب. قد يكون البريد مستخدمًا مسبقًا.",
+
       signoutError: "تعذّر تسجيل الخروج. جرّب تاني.",
       rateLimited:
         "تم تجاوز الحد المسموح من المحاولات مؤقتًا. يُرجى الانتظار والمحاولة لاحقًا.",
@@ -595,6 +606,14 @@ export const dictionaries = {
       completed: "Completed",
       cancelled: "Cancelled",
       genericService: "Service request",
+      signup: "Create a new account",
+      signupIntro: "Join us to easily request services and track their status.",
+      signupButton: "Create account",
+      signingUp: "Creating account...",
+      hasAccount: "Already have an account? Sign in.",
+      name: "Name",
+      namePlaceholder: "Name",
+
     },
     setup: {
       preview:
@@ -623,6 +642,9 @@ export const dictionaries = {
       signinError:
         "Unable to sign in. Check your credentials and email confirmation.",
       signinSuccess: "Signed in successfully.",
+      signupSuccess: "Account created successfully. Please sign in.",
+      signupError: "Unable to create account. Email might already be in use.",
+
       signoutError: "Unable to sign out. Please try again.",
       rateLimited:
         "Too many attempts. Please wait a few moments and try again.",
