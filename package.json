@@ -15,9 +15,11 @@
     "test:db": "node scripts/test-rls.mjs",
     "test:e2e": "playwright test",
     "test:ai-security": "node --conditions=react-server --experimental-strip-types scripts/test-ai-security.mjs",
+    "test:sast": "python3 scripts/sast-scan.py",
     "format": "prettier --write src tests scripts *.ts *.mjs *.json"
   },
   "dependencies": {
+    "@next/swc-linux-x64-gnu": "^16.3.8",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.2",
     "@upstash/ratelimit": "^2.2.0",

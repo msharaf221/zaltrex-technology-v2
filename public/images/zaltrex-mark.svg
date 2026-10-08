@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 370" fill="none">
+  <defs>
+    <linearGradient id="zgrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d2ff" />
+      <stop offset="100%" stop-color="#0066ff" />
+    </linearGradient>
+    <linearGradient id="zgrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0080ff" />
+      <stop offset="100%" stop-color="#0044ee" />
+    </linearGradient>
+    <linearGradient id="zgrad3" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0055ff" />
+    </linearGradient>
+  </defs>
+  <!-- Top Bar -->
+  <path d="M77 0 H381 L199 180 V72 H7 L77 0 Z" fill="url(#zgrad1)" />
+  <!-- Middle Diagonal -->
+  <path d="M175 113 V204 L8 369 V279 L175 113 Z" fill="url(#zgrad2)" />
+  <!-- Bottom Bar and Slash -->
+  <path d="M381 38 V73 L167 287 H392 L324 355 H131 L97 321 L381 38 Z" fill="url(#zgrad3)" />
+</svg>

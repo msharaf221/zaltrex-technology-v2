@@ -31,7 +31,7 @@ export default async function AboutPage() {
           <p className="text-base leading-9 whitespace-pre-wrap text-slate-600">
             {content?.content_text.trim() || t.about.storyDefault}
           </p>
-          {content?.image_url && (
+          {content?.image_url ? (
             <Image
               src={content.image_url}
               alt={t.about.label}
@@ -39,6 +39,16 @@ export default async function AboutPage() {
               height={540}
               className="mt-7 h-auto w-full rounded-2xl object-cover"
             />
+          ) : (
+            <div className="mt-7 overflow-hidden rounded-2xl border border-slate-800/10 shadow-md">
+              <Image
+                src="/images/zaltrex-banner.webp"
+                alt="Zaltrex Technology"
+                width={960}
+                height={355}
+                className="h-auto w-full object-cover"
+              />
+            </div>
           )}
           <Link href="/contact" className="text-link mt-7">
             {t.common.talk}

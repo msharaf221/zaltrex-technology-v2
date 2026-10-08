@@ -23,6 +23,8 @@ async function as(role, uid = "") {
   await db.query("select set_config('request.jwt.claim.sub', $1, false);", [
     uid,
   ]);
+  const allowedRoles = ["anon", "authenticated", "service_role", "supabase_admin", "postgres"];
+  if (!allowedRoles.includes(role)) throw new Error(`Invalid role: ${role}`);
   await db.exec(`set role ${role};`); // Fixed role names from this test only.
 }
 async function denied(sql, params = [], code = "42501") {

@@ -25,8 +25,8 @@ export function SiteFooter() {
         </div>
         <div className="grid gap-10 py-12 sm:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <Brand />
-            <p className="mt-5 max-w-xs text-sm leading-7 text-slate-500">
+            <Brand showTagline />
+            <p className="mt-4 max-w-xs text-sm leading-6 text-slate-500">
               {t.common.brandLine}
             </p>
           </div>

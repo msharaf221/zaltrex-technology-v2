@@ -110,48 +110,97 @@ html[lang="ar"] .page-title {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  gap: 10px;
-  border-radius: 6px;
+  gap: 12px;
+  border-radius: 8px;
   text-decoration: none;
   font-family: "Manrope", Arial, sans-serif;
+  transition: opacity 0.2s ease;
 }
 .brand:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #0080ff;
   outline-offset: 6px;
 }
 .brand-icon {
   display: flex;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   align-items: center;
   justify-content: center;
-  color: white;
-  background: #2563eb;
-  border-radius: 11px;
-  box-shadow: 0 5px 14px -8px #2563eb;
+  background: radial-gradient(circle at 35% 30%, #0d1e44 0%, #030818 100%);
+  border: 1px solid rgba(0, 180, 255, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px -4px rgba(0, 140, 255, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.brand:hover .brand-icon {
+  transform: scale(1.05);
+  border-color: rgba(0, 220, 255, 0.65);
+  box-shadow: 0 6px 22px -3px rgba(0, 160, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
 }
 .brand-title {
   display: block;
-  color: #15213a;
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: 800;
-  letter-spacing: 0.055em;
+  color: #0c152a;
+  font-size: 19px;
+  line-height: 20px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-.brand-dot {
-  color: #2563eb;
+.brand-x {
+  color: #00d2ff;
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+  font-weight: 900;
 }
 .brand-subtitle {
   display: block;
   margin-top: 2px;
-  color: #6c7990;
-  font-size: 7px;
-  font-weight: 700;
-  letter-spacing: 0.36em;
+  color: #0284c7;
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
 }
-.brand-light .brand-title,
+.brand-tagline {
+  display: block;
+  margin-top: 3px;
+  font-size: 9px;
+  color: #64748b;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.brand-light .brand-title {
+  color: #ffffff;
+}
 .brand-light .brand-subtitle {
-  color: white;
+  color: #38bdf8;
+}
+.brand-lg .brand-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+}
+.brand-lg .brand-title {
+  font-size: 24px;
+  line-height: 26px;
+}
+.brand-lg .brand-subtitle {
+  font-size: 9px;
+}
+.brand-sm .brand-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+.brand-sm .brand-title {
+  font-size: 16px;
+  line-height: 18px;
+}
+.brand-sm .brand-subtitle {
+  font-size: 6.5px;
 }
 .nav-link {
   position: relative;
@@ -377,18 +426,16 @@ html[lang="ar"] .hero-intro {
   color: white;
   z-index: 2;
   border-radius: 32px;
-  background: linear-gradient(
-    140deg,
-    #94c2ff 0%,
-    #4081f9 25%,
-    #2860ed 59%,
-    #162ba9 100%
+  background: radial-gradient(
+    circle at 35% 30%,
+    #0e214d 0%,
+    #040a1b 100%
   );
   box-shadow:
-    inset 1px 1px 1px #ffffff95,
-    inset -2px -3px 9px #051b8060,
-    0 23px 39px -15px #2456ff80;
-  border: 1px solid #ffffff35;
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -2px -3px 12px rgba(0, 100, 255, 0.35),
+    0 22px 42px -12px rgba(0, 150, 255, 0.55);
+  border: 1px solid rgba(0, 210, 255, 0.45);
   transform: rotate(-8deg);
   animation: core-float 8s ease-in-out infinite;
 }
@@ -396,12 +443,13 @@ html[lang="ar"] .hero-intro {
   content: "";
   position: absolute;
   inset: 8px;
-  border: 1px solid #ffffff21;
+  border: 1px solid rgba(0, 200, 255, 0.2);
   border-radius: 25px;
 }
 .stage-core svg {
   width: 76px;
   height: 76px;
+  filter: drop-shadow(0 0 16px rgba(0, 195, 255, 0.65));
 }
 .floating-card {
   position: absolute;
