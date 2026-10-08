@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 
 // Node 22: run with --conditions=react-server --experimental-strip-types.
 // No Google requests, real Redis connections, or secret values are used by these tests.
@@ -98,9 +99,12 @@ try {
   });
   assert.ok(requests > before);
   passed("Upstash SDK success:true timeout responses are explicitly denied");
-  console.log(
-    `\n${checks} local AI guard checks passed. No provider requests were made.`,
-  );
+  const envExample = await readFile(new URL("../.env.example", import.meta.url), "utf8");
+  assert.match(envExample, /^GEMINI_API_KEY=$/m);
+  assert.match(envExample, /^GEMINI_MODEL=gemini-flash-latest$/m);
+  assert.match(envExample, /^GEMINI_FALLBACK_MODEL=gemini-3.1-flash-lite$/m);
+  passed("Environment example keeps Gemini key empty and documents safe model defaults");
+  console.log(`\n${checks} local AI guard checks passed.`);
 } finally {
   globalThis.fetch = originalFetch;
   Date.now = originalNow;
