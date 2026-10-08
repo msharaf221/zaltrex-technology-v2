@@ -250,6 +250,8 @@ export const dictionaries = {
       error: "المساعد مش متاح دلوقتي. جرّب تاني أو تواصل مع الفريق.",
       limited: "خلّينا نكمّل بعد دقيقة. وصلت للحد المؤقت للرسائل.",
       invalid: "الرسالة طويلة أو غير صالحة. اختصرها وجرب تاني.",
+      unconfigured:
+        "المساعد غير مُفعّل حاليًا لأن إعدادات الخادم ناقصة. يُرجى التواصل مع إدارة الموقع.",
       unavailable:
         "المساعد محتاج تفعيل من إدارة الموقع. تقدر تتواصل مع الفريق مباشرة.",
       human: "تواصل مع الفريق",
@@ -653,6 +655,8 @@ export const dictionaries = {
       limited:
         "Let’s continue in a minute. You’ve reached the temporary message limit.",
       invalid: "The message is too long or invalid. Shorten it and try again.",
+      unconfigured:
+        "The assistant is not configured yet because a required server setting is missing. Please contact the site administrator.",
       unavailable:
         "The assistant needs to be activated by the site administrator. You can contact the team directly.",
       human: "Contact the team",
