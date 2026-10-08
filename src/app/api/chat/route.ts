@@ -39,7 +39,7 @@ const schema = z
 
 function errorResponse(
   locale: Locale,
-  code: "error" | "limited" | "invalid" | "unavailable",
+  code: "error" | "limited" | "invalid" | "unavailable" | "unconfigured",
   status: number,
   retryAfter?: number,
 ) {
@@ -137,15 +137,15 @@ export async function POST(request: Request) {
   }
 
   const key = process.env.GEMINI_API_KEY;
-  if (!key) return errorResponse(locale, "unavailable", 503);
+  if (!key) return errorResponse(locale, "unconfigured", 503);
   const limited = await limitChat(request);
   if (!limited.configured)
     return errorResponse(locale, "unavailable", 503, limited.retryAfter);
   if (!limited.allowed)
     return errorResponse(locale, "limited", 429, limited.retryAfter);
 
-  const primary = process.env.GEMINI_MODEL || "gemini-3.8-flash";
-  const fallback = process.env.GEMINI_FALLBACK_MODEL ?? "gemini-flash-latest";
+  const primary = process.env.GEMINI_MODEL || "gemini-flash-latest";
+  const fallback = process.env.GEMINI_FALLBACK_MODEL ?? "gemini-3.1-flash-lite";
   const models = Array.from(
     new Set([primary, ...(fallback && fallback !== "none" ? [fallback] : [])]),
   );

@@ -14,8 +14,8 @@
 
 ```dotenv
 GEMINI_API_KEY=YOUR_PRIVATE_GOOGLE_KEY
-GEMINI_MODEL=gemini-3.8-flash
-GEMINI_FALLBACK_MODEL=gemini-flash-latest
+GEMINI_MODEL=gemini-flash-latest
+GEMINI_FALLBACK_MODEL=gemini-3.1-flash-lite
 ```
 
 - ما تستخدمش بادئة `NEXT_PUBLIC_` لأي مفتاح خاص.

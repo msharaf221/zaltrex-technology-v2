@@ -114,6 +114,8 @@ export function ChatWidget() {
             ? t.chat.limited
             : code === "invalid"
               ? t.chat.invalid
+              : code === "unconfigured"
+                ? t.chat.unconfigured
               : code === "unavailable"
                 ? t.chat.unavailable
                 : t.chat.error;

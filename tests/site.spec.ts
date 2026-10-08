@@ -283,6 +283,22 @@ test("AI API rejects oversized messages", async ({ request }) => {
   expect(response.status()).toBe(400);
 });
 
+test("AI API reports explicit configuration error when GEMINI_API_KEY is missing", async ({
+  request,
+}) => {
+  test.skip(
+    Boolean(process.env.GEMINI_API_KEY),
+    "This assertion targets missing GEMINI_API_KEY only.",
+  );
+  const response = await request.post("/api/chat", {
+    headers: { Origin: "http://127.0.0.1:3000" },
+    data: { locale: "en", messages: [{ role: "user", text: "Hello" }] },
+  });
+  expect(response.status()).toBe(503);
+  const data = await response.json();
+  expect(data.code).toBe("unconfigured");
+});
+
 test("RTL studio tabs support arrow, Home and End keyboard navigation", async ({
   page,
 }) => {
