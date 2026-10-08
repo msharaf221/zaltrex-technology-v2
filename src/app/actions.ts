@@ -10,6 +10,7 @@ import { getLocale } from "@/lib/locale-server";
 import type { FormState } from "@/lib/form-state";
 import { sanitizeInput, verifySubmissionTiming } from "@/lib/security/sanitize";
 import { limitServerAction } from "@/lib/security/action-limiter";
+import { sendNotificationEmail } from "@/lib/mailer";
 
 function text(form: FormData, key: string) {
   const value = form.get(key);
@@ -89,6 +90,18 @@ export async function submitContact(
       console.error("[contact] Insert failed:", error.code);
       return failure(t.contactError, values);
     }
+    
+    // Send email notification
+    await sendNotificationEmail(
+      `New Contact Message: ${parsed.data.subject}`,
+      `Name: ${parsed.data.name}
+Email: ${parsed.data.email}
+Subject: ${parsed.data.subject}
+
+Message:
+${parsed.data.message}`
+    );
+
     return { status: "success", message: t.contactSuccess };
   } catch {
     return failure(t.network, values);
@@ -149,6 +162,17 @@ export async function submitServiceRequest(
       console.error("[request-service] Insert failed:", error.code);
       return failure(t.requestError, values);
     }
+    
+    // Send email notification
+    await sendNotificationEmail(
+      `New Service Request from ${user.email}`,
+      `Client Email: ${user.email}
+Service ID: ${parsed.data.service_id}
+
+Requirements:
+${parsed.data.requirements}`
+    );
+
     revalidatePath("/request-service");
     return { status: "success", message: t.requestSuccess };
   } catch {
