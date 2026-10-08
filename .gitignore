@@ -6,3 +6,10 @@ node_modules/
 playwright-report/
 test-results/
 .DS_Store
+supabase/.temp/
+.agents/
+.claude/
+agent/
+skills-lock.json
+AGENTS.md
+CLAUDE.md

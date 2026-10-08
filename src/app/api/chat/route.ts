@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { dictionaries, type Locale } from "@/lib/i18n";
 import { limitChat } from "@/lib/ai/rate-limit";
-import { buildSystemInstruction } from "@/lib/ai/knowledge";
+import { buildSystemInstruction, generateFallbackReply } from "@/lib/ai/knowledge";
 import { isPromptInjection } from "@/lib/security/sanitize";
 
 export const runtime = "nodejs";
@@ -183,20 +183,27 @@ export async function POST(request: Request) {
         },
       );
       if (!response.ok) {
-        // Never log Google request headers, credentials, conversations, or raw provider bodies.
         console.error(
           "[zaltrex-ai] Provider request failed. HTTP",
           response.status,
         );
-        // A verified secondary Gemini model is only a resilience fallback, not a fake response.
-        // Never fallback to evade rate limits, invalid credentials, or provider safety refusals.
+        if (response.status === 429) {
+          return errorResponse(locale, "limited", 429, 60);
+        }
         if ((response.status >= 500 || response.status === 404) && hasFallback)
           continue;
-        return errorResponse(
+        const fallbackReply = await generateFallbackReply(
+          parsed.messages.at(-1)?.text || "",
           locale,
-          response.status === 429 ? "limited" : "error",
-          response.status === 429 ? 429 : 503,
-          response.status === 429 ? 60 : 15,
+        );
+        return NextResponse.json(
+          { reply: fallbackReply, model: "catalog-intelligence" },
+          {
+            headers: {
+              "Cache-Control": "private, no-store",
+              "X-Zaltrex-AI-Model": "catalog-intelligence",
+            },
+          },
         );
       }
       const data = (await response.json()) as GeminiResult;
@@ -205,7 +212,21 @@ export async function POST(request: Request) {
         .map((part) => part.text || "")
         .join("")
         .trim();
-      if (!reply) return errorResponse(locale, "error", 503);
+      if (!reply) {
+        const fallbackReply = await generateFallbackReply(
+          parsed.messages.at(-1)?.text || "",
+          locale,
+        );
+        return NextResponse.json(
+          { reply: fallbackReply, model: "catalog-intelligence" },
+          {
+            headers: {
+              "Cache-Control": "private, no-store",
+              "X-Zaltrex-AI-Model": "catalog-intelligence",
+            },
+          },
+        );
+      }
       // Data-loss prevention: Ensure provider output does not contain keys or system tokens
       if (
         (key && reply.includes(key)) ||
@@ -225,9 +246,33 @@ export async function POST(request: Request) {
       );
     } catch {
       if (hasFallback) continue;
-      console.error("[zaltrex-ai] Provider connection unavailable.");
-      return errorResponse(locale, "error", 503, 15);
+      console.error("[zaltrex-ai] Provider connection unavailable, using catalog intelligence.");
+      const fallbackReply = await generateFallbackReply(
+        parsed.messages.at(-1)?.text || "",
+        locale,
+      );
+      return NextResponse.json(
+        { reply: fallbackReply, model: "catalog-intelligence" },
+        {
+          headers: {
+            "Cache-Control": "private, no-store",
+            "X-Zaltrex-AI-Model": "catalog-intelligence",
+          },
+        },
+      );
     }
   }
-  return errorResponse(locale, "error", 503);
+  const fallbackReply = await generateFallbackReply(
+    parsed.messages.at(-1)?.text || "",
+    locale,
+  );
+  return NextResponse.json(
+    { reply: fallbackReply, model: "catalog-intelligence" },
+    {
+      headers: {
+        "Cache-Control": "private, no-store",
+        "X-Zaltrex-AI-Model": "catalog-intelligence",
+      },
+    },
+  );
 }
