@@ -9,7 +9,9 @@ export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
 
   // Apply enterprise military-grade security headers
-  const securityHeaders = getSecurityHeaders(process.env.NODE_ENV === "production");
+  const securityHeaders = getSecurityHeaders(
+    process.env.NODE_ENV === "production",
+  );
   for (const [key, value] of Object.entries(securityHeaders)) {
     response.headers.set(key, value);
   }

@@ -361,7 +361,9 @@ test("Case Studies Showcase allows switching between tabs and studies", async ({
   // Switch to Challenge tab
   const chalTab = page.getByRole("tab", { name: "التحدي" });
   await chalTab.click();
-  await expect(page.locator("text=بطء التحميل على شبكات الهواتف")).toBeVisible();
+  await expect(
+    page.locator("text=بطء التحميل على شبكات الهواتف"),
+  ).toBeVisible();
 });
 
 test("Security Trust Center displays A+ badge and expands architecture details", async ({
@@ -373,9 +375,35 @@ test("Security Trust Center displays A+ badge and expands architecture details",
   await expect(page.locator("text=A+ معتمد")).toBeVisible();
 
   // Click expand on first pillar
-  const expandBtn = page.getByRole("button", { name: "تفاصيل المعمارية" }).first();
+  const expandBtn = page
+    .getByRole("button", { name: "تفاصيل المعمارية" })
+    .first();
   await expandBtn.click();
-  await expect(page.locator("text=PostgreSQL 16 native RLS policies")).toBeVisible();
+  await expect(
+    page.locator("text=PostgreSQL 16 native RLS policies"),
+  ).toBeVisible();
+});
+
+test("Security Trust Center in English displays English button and details without Arabic", async ({
+  page,
+  context,
+}) => {
+  await context.addCookies([
+    { name: "zaltrex_locale", value: "en", url: "http://127.0.0.1:3000" },
+  ]);
+  await page.goto("/");
+  const trustSection = page.locator("#trust-title");
+  await expect(trustSection).toBeVisible();
+  await expect(page.locator("text=A+ Verified")).toBeVisible();
+
+  const expandBtn = page
+    .getByRole("button", { name: "Architecture details" })
+    .first();
+  await expect(expandBtn).toBeVisible();
+  await expandBtn.click();
+  await expect(
+    page.getByRole("button", { name: "Hide details" }).first(),
+  ).toBeVisible();
 });
 
 test("AI API rejects prompt injection attempts", async ({ request }) => {
@@ -395,4 +423,3 @@ test("AI API rejects prompt injection attempts", async ({ request }) => {
   const data = await response.json();
   expect(data.code).toBe("invalid");
 });
-

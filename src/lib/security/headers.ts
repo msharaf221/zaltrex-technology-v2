@@ -5,7 +5,9 @@
  * Mozilla Observatory A+ standards, and RFC security guidelines.
  */
 
-export function getSecurityHeaders(isProduction: boolean = process.env.NODE_ENV === "production"): Record<string, string> {
+export function getSecurityHeaders(
+  isProduction: boolean = process.env.NODE_ENV === "production",
+): Record<string, string> {
   // Content Security Policy
   // Note: 'unsafe-inline' is required for Next.js hydration scripts & styling.
   // We forbid object-src, restrict base-uri, enforce frame-ancestors 'none', and restrict connect sources.

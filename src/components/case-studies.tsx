@@ -88,31 +88,33 @@ export function CaseStudiesShowcase() {
                 role="tablist"
                 className="inline-flex rounded-xl border border-slate-200 bg-white p-1"
               >
-                {(["challenge", "solution", "architecture"] as const).map((tab) => {
-                  const active = activeTab === tab;
-                  const label =
-                    tab === "challenge"
-                      ? dict.tabChallenge
-                      : tab === "solution"
-                        ? dict.tabSolution
-                        : dict.tabArchitecture;
-                  return (
-                    <button
-                      key={tab}
-                      type="button"
-                      role="tab"
-                      aria-selected={active}
-                      onClick={() => setActiveTab(tab)}
-                      className={`rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-                        active
-                          ? "bg-blue-600 text-white"
-                          : "text-slate-600 hover:text-slate-900"
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
+                {(["challenge", "solution", "architecture"] as const).map(
+                  (tab) => {
+                    const active = activeTab === tab;
+                    const label =
+                      tab === "challenge"
+                        ? dict.tabChallenge
+                        : tab === "solution"
+                          ? dict.tabSolution
+                          : dict.tabArchitecture;
+                    return (
+                      <button
+                        key={tab}
+                        type="button"
+                        role="tab"
+                        aria-selected={active}
+                        onClick={() => setActiveTab(tab)}
+                        className={`rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                          active
+                            ? "bg-blue-600 text-white"
+                            : "text-slate-600 hover:text-slate-900"
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    );
+                  },
+                )}
               </div>
             </div>
           </div>

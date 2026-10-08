@@ -7,7 +7,9 @@ export function sanitizeInput(input: string): string {
   if (typeof input !== "string") return "";
 
   // 1. Remove null bytes and control chars (preserve standard tabs, CR, LF)
-  let clean = input.replace(/\0/g, "").replace(/[\x01-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
+  let clean = input
+    .replace(/\0/g, "")
+    .replace(/[\x01-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
 
   // 2. Sanitize HTML tags and script-like tokens defensively
   clean = clean
@@ -48,7 +50,9 @@ export function isPromptInjection(text: string): boolean {
  * Verify form submission timing to prevent sub-second headless bot spam.
  * Human users take at least 1.2 seconds to view and submit a form.
  */
-export function verifySubmissionTiming(submittedTimestamp: string | null | undefined): boolean {
+export function verifySubmissionTiming(
+  submittedTimestamp: string | null | undefined,
+): boolean {
   if (!submittedTimestamp) return true; // If not provided, fallback to honeypot
   const timestamp = parseInt(submittedTimestamp, 10);
   if (isNaN(timestamp)) return false;

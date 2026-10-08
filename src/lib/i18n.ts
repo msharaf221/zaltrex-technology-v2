@@ -223,7 +223,8 @@ export const dictionaries = {
       signinError: "تعذّر تسجيل الدخول. راجع بياناتك وتأكيد بريدك الإلكتروني.",
       signinSuccess: "تم تسجيل الدخول.",
       signoutError: "تعذّر تسجيل الخروج. جرّب تاني.",
-      rateLimited: "تم تجاوز الحد المسموح من المحاولات مؤقتًا. يُرجى الانتظار والمحاولة لاحقًا.",
+      rateLimited:
+        "تم تجاوز الحد المسموح من المحاولات مؤقتًا. يُرجى الانتظار والمحاولة لاحقًا.",
       botDetected: "تم رفض الطلب للاشتباه في نشاط غير بشري.",
     },
     chat: {
@@ -267,14 +268,24 @@ export const dictionaries = {
     estimator: {
       label: "حاسبة تقدير النطاق والوقت",
       title: "احسب ملامح مشروعك في دقيقة",
-      intro: "اختار نوع الحل والمميزات اللي في بالك، واعرف التقدير المبدئي للوقت والخطوات المقترحة.",
+      intro:
+        "اختار نوع الحل والمميزات اللي في بالك، واعرف التقدير المبدئي للوقت والخطوات المقترحة.",
       step1Title: "1. نوع الحل الرقمي",
       step2Title: "2. المزايا والمتطلبات",
       step3Title: "3. الجدول الزمني المستهدف",
       types: {
-        web: { title: "موقع أو منصة ويب", desc: "تصميم متكامل وهوية تفاعلية ثنائية اللغة وسريعة للغاية." },
-        auto: { title: "أتمتة ونظام إدارة", desc: "ربط قواعد البيانات ونماذج العمل وتقليل الخطوات المتكررة." },
-        ai: { title: "مساعد ذكاء اصطناعي", desc: "مساعد مخصص لخدمة العملاء أو تحليل المستندات بأمان تام." },
+        web: {
+          title: "موقع أو منصة ويب",
+          desc: "تصميم متكامل وهوية تفاعلية ثنائية اللغة وسريعة للغاية.",
+        },
+        auto: {
+          title: "أتمتة ونظام إدارة",
+          desc: "ربط قواعد البيانات ونماذج العمل وتقليل الخطوات المتكررة.",
+        },
+        ai: {
+          title: "مساعد ذكاء اصطناعي",
+          desc: "مساعد مخصص لخدمة العملاء أو تحليل المستندات بأمان تام.",
+        },
       },
       features: {
         bilingual: "دعم كامل للعربية والإنجليزية (RTL/LTR)",
@@ -297,49 +308,77 @@ export const dictionaries = {
       transferButton: "استخدم هذا النطاق وابدأ مشروعك",
       reset: "إعادة التعيين",
       copied: "تم نسخ ملخص النطاق!",
+      copyBrief: "نسخ الملخص",
+      scopeTag: "نطاق مقترح",
     },
     trust: {
       label: "معايير الأمان والثقة",
       title: "بنية أمنية بأعلى المعايير، من البداية.",
-      intro: "نلتزم بأعلى معايير حماية البيانات والخصوصية؛ لا تعقب، ولا تنازلات أمنية.",
+      intro:
+        "نلتزم بأعلى معايير حماية البيانات والخصوصية؛ لا تعقب، ولا تنازلات أمنية.",
       badgeRls: "عزل صارم للبيانات (RLS)",
-      badgeRlsDesc: "كل عميل يرى بياناته فقط؛ حماية مباشرة ومفحوصة على مستوى محرك قاعدة البيانات.",
+      badgeRlsDesc:
+        "كل عميل يرى بياناته فقط؛ حماية مباشرة ومفحوصة على مستوى محرك قاعدة البيانات.",
+      badgeRlsDetails:
+        "سياسات حماية PostgreSQL 16 native RLS policies (19 سياسة صريحة) تعزل سجلات كل عميل مباشرة على مستوى محرك قاعدة البيانات. يتم التحقق من المعرفات عبر JWT من جهة السيرفر حصريًا لمنع ثغرات IDOR بالكامل.",
       badgeCsp: "حماية عسكرية ضد الحقن (CSP)",
-      badgeCspDesc: "سياسات Content Security Policy مشددة تمنع أي أكواد دخيلة أو هجمات XSS والنقر الاحتيالي.",
+      badgeCspDesc:
+        "سياسات Content Security Policy مشددة تمنع أي أكواد دخيلة أو هجمات XSS والنقر الاحتيالي.",
+      badgeCspDetails:
+        "سياسة Content Security Policy مشددة مع frame-ancestors 'none' وobject-src 'none' وbase-uri 'self' وتشفير HSTS صارم لمدة عامين، وحماية كاملة ضد تزييف نوع الملفات وهجمات XSS.",
       badgePrivacy: "خصوصية مطلقة للذكاء الاصطناعي",
-      badgePrivacyDesc: "معالجة طرفية بدون تدريب النماذج على محادثاتك أو بياناتك الخاصة بتاتًا.",
+      badgePrivacyDesc:
+        "معالجة طرفية بدون تدريب النماذج على محادثاتك أو بياناتك الخاصة بتاتًا.",
+      badgePrivacyDetails:
+        "تشغيل نموذج Gemini من جهة السيرفر فقط. لا يتم تخزين المحادثات في الكوكيز أو مشاركتها مع أطراف ثالثة، مع دروع فحص صارمة ضد هجمات كسر الحماية (Prompt Injection) قبل التنفيذ.",
       badgeLocal: "خطوط وأصول محلية 100%",
-      badgeLocalDesc: "لا نستخدم شبكات توزيع أطراف ثالثة لتتبع الزوار؛ كل خط وملف مستضاف ذاتيًا.",
+      badgeLocalDesc:
+        "لا نستخدم شبكات توزيع أطراف ثالثة لتتبع الزوار؛ كل خط وملف مستضاف ذاتيًا.",
+      badgeLocalDetails:
+        "جميع الخطوط (IBM Plex Sans Arabic وManrope) والأصول الثابتة مستضافة ذاتيًا محليًا بصيغة WOFF2 محسنة؛ بلا بكسلات تتبع، وبلا نصوص تحليلية، وبلا شبكات CDN خارجية.",
       trustScore: "مؤشر الجاهزية الأمنية",
       grade: "A+ معتمد",
+      showDetails: "تفاصيل المعمارية",
+      hideDetails: "إخفاء التفاصيل",
+      rfcCompliance: "إفصاح أمني متوافق مع معيار RFC 9116",
     },
     caseStudies: {
       label: "نماذج وتجارب حية",
       title: "كيف نحوّل التحديات إلى نتائج ملموسة",
-      intro: "استكشف نماذج معمارية واقعية تبيّن أسلوبنا في هندسة البرمجيات والاهتمام البالغ بالتفاصيل.",
+      intro:
+        "استكشف نماذج معمارية واقعية تبيّن أسلوبنا في هندسة البرمجيات والاهتمام البالغ بالتفاصيل.",
       tabChallenge: "التحدي",
       tabSolution: "الحل الرقمي",
       tabArchitecture: "المعمارية التقنية",
       study1: {
         tag: "منصات الويب",
         title: "بوابة مؤسسية ثنائية اللغة فائقة السرعة",
-        challenge: "بطء التحميل على شبكات الهواتف وصعوبة دعم اللغة العربية والإنجليزية بالتساوي دون تشويه الواجهة أو تأخير العرض.",
-        solution: "بناء معمارية Next.js متطورة مع خطوط محلية ذاتية الاستضافة وعزل كامل لاتجاهات RTL/LTR وسرعة تحميل استثنائية.",
-        architecture: "Next.js App Router · Tailwind CSS · IBM Plex Sans Arabic · Zero Layout Shift",
+        challenge:
+          "بطء التحميل على شبكات الهواتف وصعوبة دعم اللغة العربية والإنجليزية بالتساوي دون تشويه الواجهة أو تأخير العرض.",
+        solution:
+          "بناء معمارية Next.js متطورة مع خطوط محلية ذاتية الاستضافة وعزل كامل لاتجاهات RTL/LTR وسرعة تحميل استثنائية.",
+        architecture:
+          "Next.js App Router · Tailwind CSS · IBM Plex Sans Arabic · Zero Layout Shift",
       },
       study2: {
         tag: "أنظمة وأتمتة",
         title: "أتمتة فرز الطلبات واستقبال العملاء في الوقت الفعلي",
-        challenge: "تأخر الردود على طلبات العملاء لأكثر من 12 ساعة وفقدان بعض التفاصيل بين الرسائل المتفرقة ومحاولات السبام.",
-        solution: "منظومة إدخال مشفرة مع إشعارات فورية وتوزيع تلقائي للطلبات مع حماية صارمة بمحددات تدفق الطلبات ومصدات البوت.",
-        architecture: "Supabase RLS · Rate-Limiting Engine · Event Webhooks · Encrypted Sessions",
+        challenge:
+          "تأخر الردود على طلبات العملاء لأكثر من 12 ساعة وفقدان بعض التفاصيل بين الرسائل المتفرقة ومحاولات السبام.",
+        solution:
+          "منظومة إدخال مشفرة مع إشعارات فورية وتوزيع تلقائي للطلبات مع حماية صارمة بمحددات تدفق الطلبات ومصدات البوت.",
+        architecture:
+          "Supabase RLS · Rate-Limiting Engine · Event Webhooks · Encrypted Sessions",
       },
       study3: {
         tag: "ذكاء اصطناعي",
         title: "مساعد استشاري مخصص لا يختلق معلومات",
-        challenge: "استنزاف وقت خدمة العملاء في الرد على استفسارات متكررة وتخوف الإدارة من خطأ أو اختلاق نماذج الـ AI العامة.",
-        solution: "مساعد ذكاء اصطناعي موجه بنطاق معرفي محدد ومحمٍ ضد محاولات كسر الحماية (Jailbreak) لتقديم إجابات موثوقة ومحددة.",
-        architecture: "Gemini 3.1 Flash · Strict System Boundaries · Prompt Injection Shields · Fallback Fail-Closed",
+        challenge:
+          "استنزاف وقت خدمة العملاء في الرد على استفسارات متكررة وتخوف الإدارة من خطأ أو اختلاق نماذج الـ AI العامة.",
+        solution:
+          "مساعد ذكاء اصطناعي موجه بنطاق معرفي محدد ومحمٍ ضد محاولات كسر الحماية (Jailbreak) لتقديم إجابات موثوقة ومحددة.",
+        architecture:
+          "Gemini 3.8 Flash · Strict System Boundaries · Prompt Injection Shields · Fallback Fail-Closed",
       },
     },
   },
@@ -358,7 +397,8 @@ export const dictionaries = {
       mobileNav: "Mobile navigation",
       footerNav: "Footer navigation",
       allRights: "All rights reserved.",
-      brandLine: "Innovate. Integrate. Elevate. IT Solutions That Drive Success.",
+      brandLine:
+        "Innovate. Integrate. Elevate. IT Solutions That Drive Success.",
       talk: "Let’s talk",
       discover: "Explore solutions",
       ask: "Ask Zaltrex",
@@ -584,7 +624,8 @@ export const dictionaries = {
         "Unable to sign in. Check your credentials and email confirmation.",
       signinSuccess: "Signed in successfully.",
       signoutError: "Unable to sign out. Please try again.",
-      rateLimited: "Too many attempts. Please wait a few moments and try again.",
+      rateLimited:
+        "Too many attempts. Please wait a few moments and try again.",
       botDetected: "Submission rejected due to automated activity detection.",
     },
     chat: {
@@ -630,14 +671,24 @@ export const dictionaries = {
     estimator: {
       label: "Scope & Timeline Estimator",
       title: "Estimate your project in one minute",
-      intro: "Select your desired solution type and features to get an immediate preview of the scope and recommended milestones.",
+      intro:
+        "Select your desired solution type and features to get an immediate preview of the scope and recommended milestones.",
       step1Title: "1. Solution Type",
       step2Title: "2. Features & Scope",
       step3Title: "3. Target Timeline",
       types: {
-        web: { title: "Web Platform & Experience", desc: "Complete bespoke identity, bilingual, responsive, and ultra-fast." },
-        auto: { title: "Automation & Management System", desc: "Database sync, structured workflows, and zero redundant steps." },
-        ai: { title: "Custom AI Assistant", desc: "Private, domain-specific assistant for customer guidance and workflow acceleration." },
+        web: {
+          title: "Web Platform & Experience",
+          desc: "Complete bespoke identity, bilingual, responsive, and ultra-fast.",
+        },
+        auto: {
+          title: "Automation & Management System",
+          desc: "Database sync, structured workflows, and zero redundant steps.",
+        },
+        ai: {
+          title: "Custom AI Assistant",
+          desc: "Private, domain-specific assistant for customer guidance and workflow acceleration.",
+        },
       },
       features: {
         bilingual: "Complete Arabic & English Support (RTL/LTR)",
@@ -660,49 +711,77 @@ export const dictionaries = {
       transferButton: "Use This Scope & Start Project",
       reset: "Reset",
       copied: "Scope summary copied!",
+      copyBrief: "Copy Brief",
+      scopeTag: "Estimated Scope",
     },
     trust: {
       label: "Security & Trust Standards",
       title: "Bank-Grade Architecture, by Default.",
-      intro: "We hold the highest standards for data security and privacy. Zero tracking, zero compromises.",
+      intro:
+        "We hold the highest standards for data security and privacy. Zero tracking, zero compromises.",
       badgeRls: "Strict Row-Level Security (RLS)",
-      badgeRlsDesc: "Each client accesses only their own records; verified directly inside the database engine.",
+      badgeRlsDesc:
+        "Each client accesses only their own records; verified directly inside the database engine.",
+      badgeRlsDetails:
+        "PostgreSQL 16 native RLS policies (19 explicit policies) isolate client records directly at the database engine. Client IDs are resolved strictly from authenticated server-side JWT claims, completely blocking IDOR vulnerabilities.",
       badgeCsp: "Military-Grade Injection Defense (CSP)",
-      badgeCspDesc: "Strict Content Security Policies block unauthorized scripts, clickjacking, and XSS attacks.",
+      badgeCspDesc:
+        "Strict Content Security Policies block unauthorized scripts, clickjacking, and XSS attacks.",
+      badgeCspDetails:
+        "Strict Content Security Policy (CSP) with frame-ancestors 'none', object-src 'none', base-uri 'self', strict HSTS (63,072,000s with preload), COOP same-origin, and anti-MIME sniffing protection.",
       badgePrivacy: "Private Server-Side AI Guard",
-      badgePrivacyDesc: "Zero client training on private conversations; ephemeral runtime processing with fail-closed security.",
+      badgePrivacyDesc:
+        "Zero client training on private conversations; ephemeral runtime processing with fail-closed security.",
+      badgePrivacyDetails:
+        "Server-only Gemini AI runtime. User conversations are never stored in client cookies or shared with third-party tracking services. Prompt injection regex shields screen adversarial inputs before model execution.",
       badgeLocal: "100% Self-Hosted Local Assets",
-      badgeLocalDesc: "No third-party tracking CDNs or fonts. Every font and asset is self-hosted for guaranteed privacy.",
+      badgeLocalDesc:
+        "No third-party tracking CDNs or fonts. Every font and asset is self-hosted for guaranteed privacy.",
+      badgeLocalDetails:
+        "All typography (IBM Plex Sans Arabic and Manrope) and static assets are self-hosted locally as optimized WOFF2 binaries. Zero external tracking pixels, zero analytics scripts, and zero third-party font CDNs.",
       trustScore: "Security Readiness Score",
       grade: "A+ Verified",
+      showDetails: "Architecture details",
+      hideDetails: "Hide details",
+      rfcCompliance: "RFC 9116 Compliant Security Disclosure",
     },
     caseStudies: {
       label: "Proven Case Studies",
       title: "How We Turn Ambition Into Impact",
-      intro: "Explore architectural case studies illustrating our approach to engineering and meticulous design.",
+      intro:
+        "Explore architectural case studies illustrating our approach to engineering and meticulous design.",
       tabChallenge: "The Challenge",
       tabSolution: "Digital Solution",
       tabArchitecture: "Architecture",
       study1: {
         tag: "Web Platforms",
         title: "Ultra-Fast Bilingual Corporate Portal",
-        challenge: "High mobile bounce rate and inconsistent typography across Arabic and English interfaces.",
-        solution: "Crafted Next.js App Router architecture with local self-hosted fonts, sub-0.4s load times, and flawless bidirectional flow.",
-        architecture: "Next.js App Router · Tailwind CSS · IBM Plex Sans Arabic · Zero Layout Shift",
+        challenge:
+          "High mobile bounce rate and inconsistent typography across Arabic and English interfaces.",
+        solution:
+          "Crafted Next.js App Router architecture with local self-hosted fonts, sub-0.4s load times, and flawless bidirectional flow.",
+        architecture:
+          "Next.js App Router · Tailwind CSS · IBM Plex Sans Arabic · Zero Layout Shift",
       },
       study2: {
         tag: "Systems & Automation",
         title: "Real-Time Request Triage & Intake Engine",
-        challenge: "12-hour response lag on client inquiries and misplaced requirements across fragmented channels.",
-        solution: "End-to-end encrypted intake pipeline with instant routing, anti-bot shields, and real-time status tracking.",
-        architecture: "Supabase RLS · Rate-Limiting Engine · Event Webhooks · Encrypted Sessions",
+        challenge:
+          "12-hour response lag on client inquiries and misplaced requirements across fragmented channels.",
+        solution:
+          "End-to-end encrypted intake pipeline with instant routing, anti-bot shields, and real-time status tracking.",
+        architecture:
+          "Supabase RLS · Rate-Limiting Engine · Event Webhooks · Encrypted Sessions",
       },
       study3: {
         tag: "Artificial Intelligence",
         title: "Private Domain-Specific Advisory AI",
-        challenge: "Client support overburdened by routine technical questions; fear of AI hallucinations.",
-        solution: "Engineered a strict-boundary assistant with prompt injection defenses and fail-closed availability.",
-        architecture: "Gemini 3.1 Flash · Strict System Boundaries · Prompt Injection Shields · Fallback Fail-Closed",
+        challenge:
+          "Client support overburdened by routine technical questions; fear of AI hallucinations.",
+        solution:
+          "Engineered a strict-boundary assistant with prompt injection defenses and fail-closed availability.",
+        architecture:
+          "Gemini 3.8 Flash · Strict System Boundaries · Prompt Injection Shields · Fallback Fail-Closed",
       },
     },
   },

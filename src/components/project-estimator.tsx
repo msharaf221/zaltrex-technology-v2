@@ -21,7 +21,7 @@ type FeatureKey = "bilingual" | "auth" | "cms" | "api" | "speed";
 type TimelineKey = "agile" | "standard" | "enterprise";
 
 export function ProjectEstimator() {
-  const { t, locale } = useLocale();
+  const { t } = useLocale();
   const dict = t.estimator;
 
   const [solution, setSolution] = useState<SolutionKey>("web");
@@ -104,7 +104,11 @@ export function ProjectEstimator() {
             {/* Step 1: Solution Type */}
             <div className="surface-card p-6 sm:p-7">
               <h3 className="flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-900 uppercase">
-                <Layers size={16} className="text-blue-600" aria-hidden="true" />
+                <Layers
+                  size={16}
+                  className="text-blue-600"
+                  aria-hidden="true"
+                />
                 {dict.step1Title}
               </h3>
               <div
@@ -159,38 +163,44 @@ export function ProjectEstimator() {
                 aria-label={dict.step2Title}
                 className="mt-4 grid gap-2.5 sm:grid-cols-2"
               >
-                {(
-                  ["bilingual", "speed", "auth", "cms", "api"] as const
-                ).map((feature) => {
-                  const checked = selectedFeatures.includes(feature);
-                  return (
-                    <button
-                      key={feature}
-                      type="button"
-                      role="checkbox"
-                      aria-checked={checked}
-                      onClick={() => toggleFeature(feature)}
-                      className={`flex items-center gap-3 rounded-xl border p-3.5 text-start transition-all ${
-                        checked
-                          ? "border-blue-500 bg-blue-50/40 text-slate-900"
-                          : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50/50"
-                      }`}
-                    >
-                      <div
-                        className={`flex size-5 shrink-0 items-center justify-center rounded-md border text-white transition-colors ${
+                {(["bilingual", "speed", "auth", "cms", "api"] as const).map(
+                  (feature) => {
+                    const checked = selectedFeatures.includes(feature);
+                    return (
+                      <button
+                        key={feature}
+                        type="button"
+                        role="checkbox"
+                        aria-checked={checked}
+                        onClick={() => toggleFeature(feature)}
+                        className={`flex items-center gap-3 rounded-xl border p-3.5 text-start transition-all ${
                           checked
-                            ? "border-blue-600 bg-blue-600"
-                            : "border-slate-300 bg-white"
+                            ? "border-blue-500 bg-blue-50/40 text-slate-900"
+                            : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50/50"
                         }`}
                       >
-                        {checked && <Check size={12} strokeWidth={3} aria-hidden="true" />}
-                      </div>
-                      <span className="text-xs font-medium">
-                        {dict.features[feature]}
-                      </span>
-                    </button>
-                  );
-                })}
+                        <div
+                          className={`flex size-5 shrink-0 items-center justify-center rounded-md border text-white transition-colors ${
+                            checked
+                              ? "border-blue-600 bg-blue-600"
+                              : "border-slate-300 bg-white"
+                          }`}
+                        >
+                          {checked && (
+                            <Check
+                              size={12}
+                              strokeWidth={3}
+                              aria-hidden="true"
+                            />
+                          )}
+                        </div>
+                        <span className="text-xs font-medium">
+                          {dict.features[feature]}
+                        </span>
+                      </button>
+                    );
+                  },
+                )}
               </div>
             </div>
 
@@ -233,7 +243,11 @@ export function ProjectEstimator() {
             <div className="sticky top-24 surface-card overflow-hidden border-blue-100 bg-gradient-to-b from-white to-blue-50/30 p-6 sm:p-8 shadow-sm">
               <div className="flex items-center justify-between border-b border-slate-100 pb-5">
                 <div className="flex items-center gap-2">
-                  <Sparkles size={18} className="text-blue-600" aria-hidden="true" />
+                  <Sparkles
+                    size={18}
+                    className="text-blue-600"
+                    aria-hidden="true"
+                  />
                   <h3 className="text-lg font-bold text-slate-900">
                     {dict.summaryTitle}
                   </h3>
@@ -303,12 +317,16 @@ export function ProjectEstimator() {
                 <div className="space-y-2.5 pt-4">
                   <Link
                     href={`/contact?subject=${encodeURIComponent(
-                      `${solutionName} (${locale === "ar" ? "نطاق مقترح" : "Estimated Scope"})`,
+                      `${solutionName} (${dict.scopeTag})`,
                     )}`}
                     className="button-primary w-full shadow-md"
                   >
                     <span>{dict.transferButton}</span>
-                    <ArrowUpRight size={16} className="directional" aria-hidden="true" />
+                    <ArrowUpRight
+                      size={16}
+                      className="directional"
+                      aria-hidden="true"
+                    />
                   </Link>
 
                   <button
@@ -318,13 +336,17 @@ export function ProjectEstimator() {
                   >
                     {copied ? (
                       <>
-                        <Check size={14} className="text-emerald-600" aria-hidden="true" />
+                        <Check
+                          size={14}
+                          className="text-emerald-600"
+                          aria-hidden="true"
+                        />
                         <span className="text-emerald-700">{dict.copied}</span>
                       </>
                     ) : (
                       <>
                         <Copy size={14} aria-hidden="true" />
-                        <span>{locale === "ar" ? "نسخ الملخص" : "Copy Brief"}</span>
+                        <span>{dict.copyBrief}</span>
                       </>
                     )}
                   </button>

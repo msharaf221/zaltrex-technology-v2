@@ -35,8 +35,8 @@ export function ZMark({
           variant === "white"
             ? "#FFFFFF"
             : variant === "solid"
-            ? "currentColor"
-            : "url(#zmark-g1)"
+              ? "currentColor"
+              : "url(#zmark-g1)"
         }
       />
       {/* Middle Diagonal */}
@@ -46,8 +46,8 @@ export function ZMark({
           variant === "white"
             ? "#FFFFFF"
             : variant === "solid"
-            ? "currentColor"
-            : "url(#zmark-g2)"
+              ? "currentColor"
+              : "url(#zmark-g2)"
         }
       />
       {/* Bottom Bar and Parallel Slash */}
@@ -57,8 +57,8 @@ export function ZMark({
           variant === "white"
             ? "#FFFFFF"
             : variant === "solid"
-            ? "currentColor"
-            : "url(#zmark-g3)"
+              ? "currentColor"
+              : "url(#zmark-g3)"
         }
       />
     </svg>
@@ -93,9 +93,7 @@ export function Brand({
         </span>
         <span className="brand-subtitle">TECHNOLOGY</span>
         {showTagline && (
-          <span className="brand-tagline">
-            Innovate. Integrate. Elevate.
-          </span>
+          <span className="brand-tagline">Innovate. Integrate. Elevate.</span>
         )}
       </span>
     </Link>

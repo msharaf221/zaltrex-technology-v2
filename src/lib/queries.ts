@@ -60,23 +60,24 @@ export async function getLocalizedSiteContent(
   if (!supabase) return null;
   try {
     const keys =
-      locale === "en" ? [`${section}_en`, section] : [`${section}_ar`];
+      locale === "en" ? [`${section}_en`] : [`${section}_ar`, section];
     const { data, error } = await supabase
       .from("site_content")
       .select("id,section_name,content_text,image_url")
       .in("section_name", keys)
       .abortSignal(AbortSignal.timeout(5000));
     if (error) return null;
-    const translated = data?.find(
-      (row) => row.section_name === `${section}_${locale}`,
-    );
-    if (translated?.content_text.trim() || translated?.image_url)
-      return translated;
-    return locale === "en"
-      ? (data?.find((row) => row.section_name === section) ??
-          translated ??
-          null)
-      : (translated ?? null);
+    if (locale === "en") {
+      const row = data?.find((r) => r.section_name === `${section}_en`);
+      return row && (row.content_text.trim() || row.image_url) ? row : null;
+    }
+    const rowAr = data?.find((r) => r.section_name === `${section}_ar`);
+    if (rowAr && (rowAr.content_text.trim() || rowAr.image_url)) return rowAr;
+    const rowDefault = data?.find((r) => r.section_name === section);
+    return rowDefault &&
+      (rowDefault.content_text.trim() || rowDefault.image_url)
+      ? rowDefault
+      : null;
   } catch {
     return null;
   }

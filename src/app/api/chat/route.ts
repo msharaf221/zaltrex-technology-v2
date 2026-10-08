@@ -144,8 +144,8 @@ export async function POST(request: Request) {
   if (!limited.allowed)
     return errorResponse(locale, "limited", 429, limited.retryAfter);
 
-  const primary = process.env.GEMINI_MODEL || "gemini-flash-latest";
-  const fallback = process.env.GEMINI_FALLBACK_MODEL ?? "gemini-3.1-flash-lite";
+  const primary = process.env.GEMINI_MODEL || "gemini-3.8-flash";
+  const fallback = process.env.GEMINI_FALLBACK_MODEL ?? "gemini-flash-latest";
   const models = Array.from(
     new Set([primary, ...(fallback && fallback !== "none" ? [fallback] : [])]),
   );
@@ -161,7 +161,7 @@ export async function POST(request: Request) {
         {
           method: "POST",
           cache: "no-store",
-          signal: AbortSignal.timeout(hasFallback ? 6000 : 28000),
+          signal: AbortSignal.timeout(hasFallback ? 8000 : 28000),
           headers: {
             "Content-Type": "application/json",
             "X-goog-api-key": key,
@@ -174,9 +174,9 @@ export async function POST(request: Request) {
             })),
             generationConfig: {
               temperature: 0.6,
-              maxOutputTokens: 768,
-              ...(model === "gemini-3.1-flash-lite"
-                ? { thinkingConfig: { thinkingLevel: "minimal" } }
+              maxOutputTokens: 1024,
+              ...(model.startsWith("gemini-3")
+                ? { thinkingConfig: { thinkingLevel: "low" } }
                 : {}),
             },
           }),

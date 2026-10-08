@@ -23,39 +23,44 @@ export function SecurityTrustCenter() {
       icon: Database,
       title: dict.badgeRls,
       desc: dict.badgeRlsDesc,
-      details:
-        "PostgreSQL 16 native RLS policies (19 explicit policies) isolate client records directly at the database engine. Client IDs are resolved strictly from authenticated server-side JWT claims, completely blocking IDOR vulnerabilities.",
+      details: dict.badgeRlsDetails,
     },
     {
       icon: Lock,
       title: dict.badgeCsp,
       desc: dict.badgeCspDesc,
-      details:
-        "Strict Content Security Policy (CSP) with frame-ancestors 'none', object-src 'none', base-uri 'self', strict HSTS (63,072,000s with preload), COOP same-origin, and anti-MIME sniffing protection.",
+      details: dict.badgeCspDetails,
     },
     {
       icon: Bot,
       title: dict.badgePrivacy,
       desc: dict.badgePrivacyDesc,
-      details:
-        "Gemini 3.1 runtime is server-only. User conversations are never stored in client cookies or shared with third-party tracking services. Prompt injection regex shields screen adversarial inputs before model execution.",
+      details: dict.badgePrivacyDetails,
     },
     {
       icon: HardDriveDownload,
       title: dict.badgeLocal,
       desc: dict.badgeLocalDesc,
-      details:
-        "All typography (IBM Plex Sans Arabic and Manrope) and static assets are self-hosted locally as optimized WOFF2 binaries. Zero external tracking pixels, zero analytics scripts, and zero third-party font CDNs.",
+      details: dict.badgeLocalDetails,
     },
   ];
 
   return (
-    <section aria-labelledby="trust-title" className="py-16 sm:py-24 bg-slate-50/50 border-y border-slate-100">
+    <section
+      aria-labelledby="trust-title"
+      className="py-16 sm:py-24 bg-slate-50/50 border-y border-slate-100"
+    >
       <div className="container-shell">
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/70 px-3.5 py-1 text-xs font-semibold text-blue-700">
-            <ShieldCheck size={14} className="text-blue-600" aria-hidden="true" />
-            <span>{dict.trustScore}: {dict.grade}</span>
+            <ShieldCheck
+              size={14}
+              className="text-blue-600"
+              aria-hidden="true"
+            />
+            <span>
+              {dict.trustScore}: {dict.grade}
+            </span>
           </div>
           <h2 id="trust-title" className="section-title mt-4">
             {dict.title}
@@ -94,7 +99,7 @@ export function SecurityTrustCenter() {
                     aria-expanded={isExpanded}
                   >
                     <span>
-                      {isExpanded ? "إخفاء التفاصيل" : "تفاصيل المعمارية"}
+                      {isExpanded ? dict.hideDetails : dict.showDetails}
                     </span>
                     <ChevronDown
                       size={14}
@@ -119,8 +124,12 @@ export function SecurityTrustCenter() {
         {/* Security Compliance Footer Line */}
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200/80 bg-white px-5 py-4 text-xs text-slate-500">
           <div className="flex items-center gap-2">
-            <CheckCircle size={15} className="text-emerald-600" aria-hidden="true" />
-            <span>RFC 9116 Compliant Security Disclosure</span>
+            <CheckCircle
+              size={15}
+              className="text-emerald-600"
+              aria-hidden="true"
+            />
+            <span>{dict.rfcCompliance}</span>
           </div>
           <a
             href="/.well-known/security.txt"

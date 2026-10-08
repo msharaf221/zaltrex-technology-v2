@@ -129,13 +129,20 @@ html[lang="ar"] .page-title {
   background: radial-gradient(circle at 35% 30%, #0d1e44 0%, #030818 100%);
   border: 1px solid rgba(0, 180, 255, 0.35);
   border-radius: 12px;
-  box-shadow: 0 4px 16px -4px rgba(0, 140, 255, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow:
+    0 4px 16px -4px rgba(0, 140, 255, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 .brand:hover .brand-icon {
   transform: scale(1.05);
   border-color: rgba(0, 220, 255, 0.65);
-  box-shadow: 0 6px 22px -3px rgba(0, 160, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 6px 22px -3px rgba(0, 160, 255, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
 }
 .brand-text-block {
   display: flex;
@@ -426,11 +433,7 @@ html[lang="ar"] .hero-intro {
   color: white;
   z-index: 2;
   border-radius: 32px;
-  background: radial-gradient(
-    circle at 35% 30%,
-    #0e214d 0%,
-    #040a1b 100%
-  );
+  background: radial-gradient(circle at 35% 30%, #0e214d 0%, #040a1b 100%);
   box-shadow:
     inset 1px 1px 2px rgba(255, 255, 255, 0.3),
     inset -2px -3px 12px rgba(0, 100, 255, 0.35),
